@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form + SVG Activity</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffffff, #000000);
+      color: white;
+      text-align: center;
+    }
+
+    .form-container {
+      background: #222;
+      margin: 30px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      background: #909090;
+      margin: -20px -20px 20px -20px;
+      padding: 15px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
+    button {
+      background: #008000;
+      border: none;
+      padding: 12px 20px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #ff3300;
+    }
+
+    .shapes-container {
+      background: #000000;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h3 {
+      background: #808080;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      color: white ;
+    }
+
+    svg {
+      margin: 10px;
+    }
+
+    .footer {
+      margin-top: 15px;
+      color: white;
+    }
+
+
+a {
+
+            text-decoration: none;  
+            text-transform: capitalize;
+            padding: 5px; 
+            color: #ffffff; 
+            border-radius: 10px; 
+            transition: all 0.3s ease; 
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+            
+            box-shadow: 5px 1px 50px;
+        }
+
+        
+        a:hover {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0); 
+            opacity: 100%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Contact Form -->
+  <div class="form-container">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required><br>
+      <input type="email" placeholder="Email" required><br>
+      <input type="text" placeholder="Website"><br>
+      <input type="tel" placeholder="Phone"><br>
+      <textarea placeholder="Message" rows="4"></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <!-- SVG Shapes -->
+  <div class="shapes-container">
+    <h3>svg shapes</h3>
+    <svg width="80" height="80">
+      <rect width="80" height="80" style="fill:blue;stroke:white;stroke-width:3"/>
+    </svg>
+    <svg width="80" height="80">
+      <circle cx="40" cy="40" r="35" style="fill:pink;stroke:none"/>
+    </svg>
+    <svg width="120" height="80">
+      <ellipse cx="60" cy="40" rx="55" ry="30" style="fill:purple"/>
+    </svg>
+    <br>
+    <svg width="120" height="20">
+      <line x1="0" y1="10" x2="120" y2="10" style="stroke:red;stroke-width:4"/>
+    </svg>
+    <svg width="100" height="100">
+      <polygon points="50,10 90,90 10,90" style="fill:aqua"/>
+    </svg>
+
+    <div class="footer">SVG in HTML5</div>
+  </div>
+
+  
+ <section id="section2"> <h2>My Skills</h2>
+   <p>HTML5:</p> <progress value="75" max="100"></progress> 
+   <p>CSS:</p> <progress value="50" max="100"></progress> 
+   <p>JavaScript:</p> <progress value="50" max="100"></progress> </section> 
+  
+  <a href="main.html">Back To Lobby</a>
+  
+</body>
+</html>
