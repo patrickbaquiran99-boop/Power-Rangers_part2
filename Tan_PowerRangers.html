@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Progress Bars</title>
+  <style>
+
+a {
+
+            text-decoration: none;  
+            text-transform: capitalize;
+            padding: 5px; 
+            color: #ffffff; 
+            border-radius: 10px; 
+            transition: all 0.3s ease; 
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+            
+            box-shadow: 5px 1px 50px;
+        }
+
+        
+        a:hover {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0); 
+            opacity: 100%;
+        }
+
+
+
+
+
+
+
+
+
+
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --max-width:1100px;
+      --radius:14px;
+      --gap:20px;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
+      --glass-border: rgba(255,255,255,0.03);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: linear-gradient(180deg,var(--bg), #061022 120%); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px; display:flex; align-items:flex-start; justify-content:center;
+      font-size:16px; line-height:1.4;
+    }
+
+    .container{
+      width:100%; max-width:var(--max-width);
+      display:grid; grid-template-columns: 360px 1fr; gap:var(--gap);
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      background: linear-gradient(180deg,var(--card), rgba(11,18,32,0.9));
+      border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border:1px solid var(--glass-border);
+      position:sticky; top:28px; height:fit-content;
+    }
+
+    .avatar{
+      width:96px; height:96px; border-radius:12px; overflow:hidden; display:block; margin-bottom:14px; border:2px solid rgba(255,255,255,0.06);
+    }
+    .name{font-size:20px; font-weight:700; margin:0 0 6px}
+    .role{color:var(--muted); margin:0 0 12px}
+    .bio{color:var(--muted); font-size:14px}
+
+    .contact{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+    .chip{background:var(--glass); padding:8px 10px; border-radius:999px; font-size:13px; color:var(--muted); border:1px solid rgba(255,255,255,0.02)}
+
+    /* MAIN */
+    .main{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius); padding:26px; box-shadow:var(--shadow); border:1px solid var(--glass-border);
+      min-height:400px;
+    }
+
+    header.project-header{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    h1{margin:0; font-size:22px}
+    p.lead{color:var(--muted); margin:10px 0 18px}
+
+    .grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px}
+
+    .card{background:var(--glass-2); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)}
+
+    /* PROGRESS BARS */
+    .skill{margin-bottom:14px}
+    .skill .meta{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px}
+    .skill .meta .label{font-weight:600}
+    .skill .meta .percent{font-size:13px; color:var(--muted)}
+
+    .bar{
+      height:12px; background:rgba(255,255,255,0.03); border-radius:999px; overflow:hidden; position:relative; border:1px solid rgba(255,255,255,0.02);
+    }
+    .bar > .fill{
+      height:100%; width:0%; border-radius:999px; background: linear-gradient(90deg,var(--accent), #06b6d4); transform-origin:left center;
+      box-shadow: 0 4px 14px rgba(124,58,237,0.16) inset;
+      transition: width 1.2s cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* small caption under bars */
+    .skill small{display:block;color:var(--muted); margin-top:6px}
+
+    /* PROJECTS */
+    .project-list{display:flex; flex-direction:column; gap:12px}
+    .project-item{display:flex; gap:12px; align-items:center}
+    .project-thumb{width:72px; height:56px; border-radius:8px; background:linear-gradient(90deg,#0b1220,#071024); border:1px solid rgba(255,255,255,0.02)}
+    .project-title{font-weight:700}
+    .project-desc{color:var(--muted); font-size:14px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .container{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+      .sidebar{position:relative; top:0}
+    }
+
+    /* utilities */
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent), #06b6d4); color:white; text-decoration:none;font-weight:600}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img class="avatar" src="https://i.pinimg.com/originals/38/2e/cd/382ecd082556827383d453aec5ae4a91.jpg",<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='54%' font-size='28' text-anchor='middle' fill='%23aab6c9' font-family='Arial' dy='.35em'>VT</text></svg>
+      <h2 class="name">Viktor Tan</h2>
+      <div class="role">Frontend Developer • UI Enthusiast</div>
+      <p class="bio">I build clean, accessible interfaces and interactive webpages. Below are a few core skills with progress indicators showing proficiency.</p>
+
+      <div class="contact">
+        <div class="chip">Manila, PH</div>
+        <div class="chip">viktort@example.com</div>
+        <div class="chip">github.com/KyotoCalix</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="project-header">
+        <div>
+          <h1>Portfolio</h1>
+          <p class="lead">Selected work and skill progress. Save this file as <code>portfolio.html</code> and open in your browser.</p>
+        </div>
+        <div>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </header>
+
+      <section style="margin-top:18px" class="grid">
+        <!-- Skills & Progress -->
+        <div class="card">
+          <h3 style="margin-top:0">Skills</h3>
+
+          <div id="skills">
+            <div class="skill" data-percent="90">
+              <div class="meta"><div class="label">HTML & CSS</div><div class="percent">90%</div></div>
+              <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90">
+                <div class="fill" style="width:0%"></div>
+              </div>
+              <small class="muted">Semantic HTML, responsive layouts, CSS Grid & Flexbox.</small>
+            </div>
+
+            <div class="skill" data-percent="82">
+              <div class="meta"><div class="label">JavaScript</div><div class="percent">82%</div></div>
+              <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82">
+                <div class="fill" style="width:0%"></div>
+              </div>
+              <small class="muted">Vanilla JS, DOM, fetch API, and basic tooling.</small>
+            </div>
+
+            <div class="skill" data-percent="74">
+              <div class="meta"><div class="label">React</div><div class="percent">74%</div></div>
+              <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74">
+                <div class="fill" style="width:0%"></div>
+              </div>
+              <small class="muted">Component patterns, hooks, and state management basics.</small>
+            </div>
+
+            <div class="skill" data-percent="68">
+              <div class="meta"><div class="label">Design & Figma</div><div class="percent">68%</div></div>
+              <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68">
+                <div class="fill" style="width:0%"></div>
+              </div>
+              <small class="muted">Layout, prototyping, and handoff-ready assets.</small>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="card">
+          <h3 style="margin-top:0">Projects</h3>
+          <div class="project-list">
+            <div class="project-item">
+              <div class="project-thumb"><img src="https://static.vecteezy.com/system/resources/previews/000/689/348/original/ux-design-landing-page-template-vector.jpg" alt="Landing Page UI" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"> </div>
+              <div>
+                <div class="project-title">Landing Page UI</div>
+                <div class="project-desc">Responsive marketing page built with semantic HTML and CSS Grid.</div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-thumb"><img src="https://editor.analyticsvidhya.com/uploads/72803final-output.PNG" alt="Interactive Dashboard" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div>
+                <div class="project-title">Interactive Dashboard</div>
+                <div class="project-desc">Data-driven components with accessible charts and filters.</div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-thumb"><img src="https://public-images.interaction-design.org/user-uploads/136548/meetups/1706750472--Component_Library.png" alt="Component Libary" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div>
+                <div class="project-title">Component Library</div>
+                <div class="project-desc">Reusable UI components, documented and tested.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section style="margin-top:18px" class="card">
+        <h3 style="margin-top:0">About this file</h3>
+        <p class="muted">This is a single-file portfolio demo that uses CSS-based progress bars. The bars animate when the page loads. You can edit the percentage by changing each <code>data-percent</code> attribute on the <code>.skill</code> elements or directly edit the <code>aria-valuenow</code> and inline <code>width</code> style on <code>.fill</code>.</p>
+      </section>
+
+      <section id="contact" style="margin-top:18px" class="card">
+        <h3 style="margin-top:0">Contact</h3>
+        <p class="muted">Want this turned into a live site or React component? I can convert or expand it (add animations, print styles, or export assets).</p>
+        <p style="margin-top:12px"><a class="btn" href="mailto:viktort@example.com">Email me</a></p>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Animate fills based on data-percent. We use a small delay to allow paint.
+    (function(){
+      const skills = document.querySelectorAll('.skill');
+      function animateAll(){
+        skills.forEach((s,i)=>{
+          const pct = Number(s.getAttribute('data-percent')) || 0;
+          const fill = s.querySelector('.fill');
+          // update accessible value
+          const bar = s.querySelector('.bar');
+          if(bar) bar.setAttribute('aria-valuenow', String(pct));
+          // staggered animation
+          setTimeout(()=>{ fill.style.width = pct + '%'; }, i*120);
+        });
+      }
+      // Run on load
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', animateAll);
+      else animateAll();
+
+      // Optional: animate when skills enter viewport (good for long pages)
+      if ('IntersectionObserver' in window){
+        const obs = new IntersectionObserver((entries, observer)=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              const s = entry.target;
+              const pct = Number(s.getAttribute('data-percent')) || 0;
+              s.querySelector('.fill').style.width = pct + '%';
+              observer.unobserve(s);
+            }
+          });
+        }, {threshold:0.25});
+        skills.forEach(s=>obs.observe(s));
+      }
+    })();
+  </script>
+  <a href="main.html">Back To Lobby</a>
+</body>
+</html>
+<svg height="50" width="50">
+    <rect width="100" height="100"
+    x="20" y="20" fill="black" />
+</svg>
